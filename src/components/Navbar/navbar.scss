@@ -1,0 +1,77 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+  width: 100%;
+  padding: 1rem 3rem;
+  z-index: 2;
+  font-size: 0.9rem;
+  color: white;
+  background: linear-gradient(
+    to top,
+    transparent 0%,
+    rgb(0, 0, 0, 0.3)
+    50%
+  );
+  transition: 300ms ease;
+
+
+  &.scrolled {
+    background-color: var(--clr-black);
+  }
+
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    > * {
+      cursor: pointer;
+    }
+
+    .logo {
+      height: 25px;
+    }
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    > * {
+      cursor: pointer;
+    }
+
+    .account {
+      position: relative;
+
+      .account-dropdown {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.8rem;
+
+        position: absolute;
+        inset: 1rem 0 0 -1.3rem;
+        height: 5rem;
+        width: 4.4rem;
+        border-radius: 5px;
+        background-color: var(--clr-black);
+
+        span {
+          padding-inline: 0.5rem;
+        }
+      }
+
+      &:hover {
+        .account-dropdown {
+          display: flex;
+        }
+      }
+    }
+  }
+}
