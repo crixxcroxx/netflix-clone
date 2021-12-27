@@ -7,7 +7,7 @@ import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 
 import "./navbar.scss";
 
-export default function Navbar() {
+export default function Navbar({ logoBtn }) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   window.onscroll = () => {
@@ -25,26 +25,35 @@ export default function Navbar() {
           alt="Netflix Logo"
         />
 
-        <span>Homepage</span>
-        <span>Series</span>
-        <span>Movies</span>
-        <span>New & Popular</span>
-        <span>My List</span>
+        {!logoBtn &&
+          <>
+            <span>Homepage</span>
+            <span>Series</span>
+            <span>Movies</span>
+            <span>New & Popular</span>
+            <span>My List</span>
+          </>
+        }
       </div>
 
       <div className="nav-right">
-        <Search />
-        <span>Kids</span>
-        <Notifications />
-        <AccountBox />
+        {logoBtn
+          ? <button className="sign-in-btn">Sign In</button>
+          : <>
+              <Search />
+              <span>Kids</span>
+              <Notifications />
+              <AccountBox />
 
-        <div className="account">
-          <ArrowDropDown />
-          <div className="account-dropdown">
-            <span>Settings</span>
-            <span>Logout</span>
-          </div>
-        </div>
+              <div className="account">
+                <ArrowDropDown />
+                <div className="account-dropdown">
+                  <span>Settings</span>
+                  <span>Logout</span>
+                </div>
+              </div>
+            </>
+        }
       </div>
     </div>
   );

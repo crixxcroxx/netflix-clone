@@ -46,6 +46,14 @@
       cursor: pointer;
     }
 
+    .sign-in-btn {
+      padding: 0.5rem 0.6rem;
+      border: none;
+      font-size: 0.9rem;
+      color: white;
+      background-color: var(--clr-red);
+    }
+
     .account {
       position: relative;
 
