@@ -6,6 +6,7 @@
   gap: 1rem;
 
   height: min-content;
+  padding-block-start: 0.5rem;
   font-size: 30px;
   color: white;
 
@@ -13,5 +14,10 @@
     color: white;
     border: none;
     background-color: var(--clr-black);
+  }
+
+
+  option::first-letter {
+    text-transform: uppercase;
   }
 }

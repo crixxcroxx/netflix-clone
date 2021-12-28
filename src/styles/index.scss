@@ -1,5 +1,9 @@
 :root {
---clr-black: #0b0b0b;
+  --clr-black: #0b0b0b;
+  --clr-grey: #222222;
+  --clr-grey-light: #3e3e3e;
+  --clr-green: #12ca22;
+  --clr-red: #e50914;
 }
 
 * {
@@ -9,11 +13,25 @@
 body {
   margin: 0;
   font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   overflow-x: hidden;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.125rem;
+}
+
+h2 {
+  font-size: 1.625rem;
+}
+
+h3 {
+  font-size: 23px;
 }

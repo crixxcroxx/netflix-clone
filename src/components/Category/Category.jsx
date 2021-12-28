@@ -1,7 +1,6 @@
 import "./category.scss";
 
-export default function Category(props) {
-  const { type } = props
+export default function Category({ type }) {
 
   return (
     <>

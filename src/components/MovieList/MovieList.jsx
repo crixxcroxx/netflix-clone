@@ -9,12 +9,16 @@ import carousel from "../../utils/carousel";
 
 import "./movieList.scss";
 
-export default function MovieList() {
+export default function MovieList(props) {
+  const { title, category, index } = props
   const listRef = useRef()
 
   return (
-    <div className="movie-list">
-      <span className="list-title">Continue to watch</span>
+    <div
+      className="movie-list"
+      style={{zIndex: index}}
+    >
+      <span className="list-title">{title || category}</span>
 
       <div className="list-container">
         <ArrowBackIosOutlined

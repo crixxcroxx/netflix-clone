@@ -6,7 +6,7 @@
   position: fixed;
   width: 100%;
   padding: 1rem 3rem;
-  z-index: 2;
+  z-index: 99;
   font-size: 0.9rem;
   color: white;
   background: linear-gradient(
@@ -33,7 +33,7 @@
     }
 
     .logo {
-      height: 25px;
+      height: 32px; /*32 x 108*/
     }
   }
 
