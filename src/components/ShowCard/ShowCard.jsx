@@ -1,9 +1,6 @@
 import { useState } from "react";
 
-import PlayArrow from '@material-ui/icons/PlayArrow';
-import Add from '@material-ui/icons/Add';
-import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
-import ThumbDownOutlined from '@material-ui/icons/ThumbDownOutlined';
+import CardMenu from "../CardMenu";
 
 import { useStoreShows } from "../../zustand/store";
 import formatTime from "../../utils/formatTime";
@@ -50,12 +47,7 @@ export default function ShowCard(props) {
           </div>
 
           <div className="show-info">
-            <div className="icons">
-              <PlayArrow />
-              <Add  />
-              <ThumbUpAltOutlined  />
-              <ThumbDownOutlined  />
-            </div>
+            <CardMenu id={show.id} show={show} />
 
             <div className="details">
               <span>{

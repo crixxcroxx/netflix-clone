@@ -1,0 +1,18 @@
+.card-menu {
+  display: flex;
+  gap: 0.5rem;
+
+  .icon {
+    display: flex;
+    align-items: center;
+
+    padding: 0.2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid white;
+
+    > * {
+      font-size: 1.1rem;
+    }
+  }
+}
