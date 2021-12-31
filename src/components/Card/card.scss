@@ -1,0 +1,44 @@
+.card {
+  border-radius: 5px;
+  background-color: var(--clr-black);
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .card-thumbnail {
+    display: grid;
+    place-content: center;
+    height: 150px;
+  }
+
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    padding: 0.8rem;
+    font-size: 0.75rem;
+    border-radius: 0 0 5px 5px;
+
+    .details {
+      display: flex;
+      gap: 0.5rem;
+
+      font-weight: 600;
+      color: var(--clr-grey-light);
+
+      .age-restriction {
+        color: var(--clr-green);
+      }
+    }
+
+    .synopsis {
+      color: var(--clr-white);
+    }
+  }
+}

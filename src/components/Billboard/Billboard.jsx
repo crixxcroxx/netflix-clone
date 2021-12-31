@@ -18,6 +18,8 @@ export default function Billboard() {
 
       <Category type={category} />
 
+      <div className="shadow"></div>
+
       <div className="billboard-info">
         <header>
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg" alt="Logo"/>

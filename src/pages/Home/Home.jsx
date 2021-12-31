@@ -14,14 +14,16 @@ export default function Home() {
     <div className="home">
       <Navbar />
       <Billboard />
+
       <div className="shows">
           <ShowsList
             key={31215}
             index={1}
-            title={endpoints[keys[2]].title}
-            endpoint={keys[2]}
+            title={endpoints[keys[0]].title}
+            endpoint={keys[0]}
           />
       </div>
+
       <Footer />
     </div>
   );

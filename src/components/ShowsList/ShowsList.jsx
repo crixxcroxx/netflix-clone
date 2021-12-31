@@ -3,7 +3,7 @@ import { useRef, useEffect } from "react";
 import ArrowBackIosOutlined from '@material-ui/icons/ArrowBackIosOutlined';
 import ArrowForwardIosOutlined from '@material-ui/icons/ArrowForwardIosOutlined';
 
-import ShowCard from "../ShowCard";
+import ShowPoster from "../ShowPoster";
 
 import { useStoreShows } from "../../zustand/store";
 import carousel from "../../utils/carousel";
@@ -46,7 +46,7 @@ export default function ShowsList(props) {
 
               <div className="list" ref={listRef}>
                 {shows.map((show, idx) =>
-                  <ShowCard
+                  <ShowPoster
                     key={show.id}
                     index={idx}
                     endpoint={endpoint}
