@@ -20,13 +20,13 @@ export const useStoreShows = create(set => ({
       .get(url)
       .then(res => {
         let shows = res.data.results
-        let media_type = endpoint === "tvShows" ? "tv" : "movie"
+        let mediaType = endpoint === "tvShows" ? "tv" : "movie"
 
-        //get detailed info
+        // get detailed info
         axios
           .all(shows.map(show =>
             axios
-              .get(`${BASE_URL}/${media_type}/${show.id}?api_key=${KEY}&language=en-US&append_to_response=videos`)
+              .get(`${BASE_URL}/${mediaType}/${show.id}?api_key=${KEY}&language=en-US&append_to_response=videos`)
               .catch(err => console.log(err))
           ))
           .then(axios.spread(function(...resp) {
@@ -40,4 +40,25 @@ export const useStoreShows = create(set => ({
       .catch(err => console.log(err))
   },
   resetLoading: () => set({ isLoading: true })
+}))
+
+export const useStorePersonalList = create((set, get) => ({
+  liked: [],
+  disliked: [],
+  saved: [],
+  addToList: (key, id, item) => {
+    let personalList = get()[key]
+    let showIndex = personalList.findIndex(k => k.id === id)
+
+    // do not add if already existing
+    if(showIndex === -1)
+      set({ [key]: [item, ...personalList] })
+  },
+  removeFromList: (key, id) => {
+    let showIndex = get()[key].findIndex(k => k.id === id)
+
+    get()[key].splice(showIndex, 1)
+
+    set({ [key]: get()[key] })
+  },
 }))
