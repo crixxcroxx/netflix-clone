@@ -17,11 +17,9 @@ export default function Card(props) {
       <div className="card-thumbnail">
         {show.detailed.videos.results[0]
           ? <iframe
-              src={`https://www.youtube.com/embed/${show.detailed.videos.results[0].key}?&autoplay=1`}
+              src={`https://www.youtube.com/embed/${show.detailed.videos.results[0].key}?&autoplay=1&controls=0&loop=1`}
               title={show.original_name || show.original_title}
               frameBorder={0}
-              controls={0}
-              loop={1}
             />
           : <div>No Preview Available</div>
         }
@@ -54,3 +52,9 @@ export default function Card(props) {
   );
 }
 
+// ? <iframe
+//               src={`https://www.youtube.com/embed/${show.detailed.videos.results[0].key}?&autoplay=1&controls=0&loop=1`}
+//               title={show.original_name || show.original_title}
+//               frameBorder={0}
+//             />
+//           :

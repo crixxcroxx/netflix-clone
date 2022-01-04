@@ -1,17 +1,21 @@
-import ArrowBackOutlined from '@material-ui/icons/ArrowBackOutlined';
+import { useParams } from "react-router-dom";
+
+import BackBtn from "../../components/BackBtn";
 
 import "./watch.scss";
 
-export default function Watch({ src }) {
+export default function Watch() {
+  const { id } = useParams()
 
   return (
     <div className="watch">
-      <div className="back-btn">
-        <ArrowBackOutlined />
-        <span>Home</span>
-      </div>
+      <BackBtn />
 
-       <video src={src} progress controls />
+        <iframe
+          src={`https://www.youtube.com/embed/${id}`}
+          frameBorder={0}
+        >
+        </iframe>
     </div>
   );
 }

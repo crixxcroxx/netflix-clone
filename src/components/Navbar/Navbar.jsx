@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import Search from '@material-ui/icons/Search';
 import Notifications from '@material-ui/icons/Notifications';
@@ -10,28 +11,36 @@ import "./navbar.scss";
 export default function Navbar({ logoBtn }) {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  window.onscroll = () => {
-    setIsScrolled(window.pageYOffset === 0 ? false : true)
+  useEffect(() => {
+    window.onscroll = () => {
+      setIsScrolled(window.pageYOffset === 0 ? false : true)
 
-    return () => window.onscroll = null
-  }
+      return () => window.onscroll = null
+    }
+
+    return () => window.removeEventListener("onscroll", setIsScrolled(false), true)
+  }, []);
+
+
 
   return (
     <div className={`navbar ${isScrolled && "scrolled"}`}>
       <div className="nav-links">
-        <img
-          className="logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-          alt="Netflix Logo"
-        />
+        <Link to="/">
+          <img
+            className="logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+            alt="Netflix Logo"
+          />
+        </Link>
 
         {!logoBtn &&
           <>
-            <span>Homepage</span>
+            <Link to="/">Homepage</Link>
             <span>Series</span>
             <span>Movies</span>
             <span>New & Popular</span>
-            <span>My List</span>
+            <Link to="my_list">My List</Link>
           </>
         }
       </div>

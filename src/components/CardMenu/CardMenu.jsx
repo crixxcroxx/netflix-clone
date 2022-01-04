@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Add from '@material-ui/icons/Add';
@@ -16,6 +17,7 @@ import "./cardMenu.scss";
 
 export default function CardMenu(props) {
   const { id, show } = props
+  const navigate = useNavigate()
 
   const {
     liked,
@@ -44,7 +46,7 @@ export default function CardMenu(props) {
 
   return (
     <div className="card-menu">
-      <div className="icon">
+      <div className="icon" onClick={() => navigate(`watch/${show.detailed.videos.results[0].key}`)}>
         <PlayArrow />
       </div>
 

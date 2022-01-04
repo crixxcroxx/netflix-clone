@@ -14,23 +14,22 @@ export default function ShowsList(props) {
   const { index, title, endpoint } = props
   const listRef = useRef()
 
-  const {
-    isLoading,
-    fetchShows,
-    resetLoading
-  } = useStoreShows(state => state)
+  const fetchShows = useStoreShows(state => state.fetchShows)
 
   let shows = useStoreShows(state => state[endpoint])
 
   useEffect(() => {
-    fetchShows(endpoint)
+    const controller = new AbortController()
+    const { signal } = controller
 
-    return () => resetLoading()
-  }, [endpoint, fetchShows, resetLoading]);
+    fetchShows({ signal }, endpoint)
+
+    return () => controller.abort()
+  }, [endpoint, fetchShows]);
 
   return (
     <>
-      {isLoading
+      {shows.length === 0
         ? <div>Loading</div>
         : <div
             className="shows-list"
@@ -65,3 +64,4 @@ export default function ShowsList(props) {
     </>
   );
 }
+
