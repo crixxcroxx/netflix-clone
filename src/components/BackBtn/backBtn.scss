@@ -1,0 +1,12 @@
+.back-btn {
+
+  > * {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    position: absolute;
+    margin: 1rem;
+    color: var(--clr-white);
+  }
+}
