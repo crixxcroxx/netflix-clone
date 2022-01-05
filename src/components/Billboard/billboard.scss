@@ -1,13 +1,13 @@
 .billboard {
   display: grid;
   grid-template-columns: 3rem 1fr 3rem;
-  grid-template-rows: 4rem 1fr 3rem;
+  grid-template-rows: 4rem 1fr 4rem;
 
 
   .shadow {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    box-shadow: 0px -55px 25px -20px var(--clr-black) inset;
+    box-shadow: 0px -55px 35px -20px var(--clr-black) inset;
   }
 
   .billboard-img {
@@ -64,9 +64,20 @@
         align-items: center;
         gap: 0.3rem;
 
-        padding: 0.2rem 1rem;
+        padding: 0.4rem 1.2rem;
         cursor: pointer;
         font-weight: 600;
+        border: none;
+      }
+
+      button:first-child {
+        color: var(--clr-black);
+        background-color: var(--clr-white);
+      }
+
+      button:last-child {
+        color: var(--clr-white);
+        background-color: var(--clr-grey-light-a);
       }
     }
   }

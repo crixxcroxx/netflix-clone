@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import Card from "../Card";
 
 import { useStoreShows, useStorePersonalList } from "../../zustand/store";
+import getHoverOffset from "../../utils/getHoverOffset";
 
 import "./showPoster.scss";
 
 export default function ShowPoster(props) {
-  const { index, endpoint, final, isPersonalList } = props
+  const { index, endpoint, isFinal, isPersonalList } = props
   const BASE_URL = "https://image.tmdb.org/t/p/w500"
 
   const [isHovered, setIsHovered] = useState(false);
-  let offsetX = final ? 232 : 233
+  const posterRef = useRef()
+
+  const { offsetX, offsetY } = getHoverOffset(index, posterRef, isFinal, isPersonalList)
 
   const shows = useStoreShows(state => state[endpoint])
   const personalList = useStorePersonalList(state => state.saved)
@@ -20,27 +23,29 @@ export default function ShowPoster(props) {
     : (shows && shows[index])
 
   return (
+    <>
+    {show &&
     <div
-      className={`show-poster ${isPersonalList ? "portrait" : "landscape"}`}
+      className="show-poster"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      ref={posterRef}
     >
       <img
-        src={isPersonalList
-          ? `${BASE_URL}${show.poster_path || show.backdrop_path}`
-          : `${BASE_URL}${show.backdrop_path || show.poster_path}`
-        }
+        src={`${BASE_URL}${show.backdrop_path || show.poster_path}`}
         alt={show.original_name || show.original_title}
       />
 
-      {isHovered && !isPersonalList &&
+      {isHovered &&
         <div
           className="poster-hover"
-          style={{left: index === 0 ? 69 : index * offsetX}}
+          style={{left: offsetX, top: offsetY}}
         >
-          <Card index={index} endpoint={endpoint} />
+          <Card index={index} endpoint={endpoint} isPersonalList={isPersonalList} />
         </div>
       }
     </div>
+    }
+    </>
   );
 }

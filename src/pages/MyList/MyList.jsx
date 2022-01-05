@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
 import ShowPoster from "../../components/ShowPoster";
-import BackBtn from "../../components/BackBtn";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 import { useStorePersonalList } from "../../zustand/store";
 
@@ -11,16 +12,20 @@ export default function MyList() {
   const saved = useStorePersonalList(state => state.saved)
 
   return (
-    <div className="my-list">
-      <BackBtn />
+    <>
+      <Navbar />
 
-      <div className="title">My List</div>
+      <div className="my-list">
+        <div className="title">My List</div>
 
-      <div className="list">
-        {saved && saved.map((show, idx) =>
-          <ShowPoster key={show.id} index={idx} isPersonalList />
-        )}
+        <div className="list">
+          {saved && saved.map((show, idx) =>
+            <ShowPoster key={show.id} index={idx} isPersonalList />
+          )}
+        </div>
       </div>
-    </div>
+
+      <Footer />
+    </>
   );
 }

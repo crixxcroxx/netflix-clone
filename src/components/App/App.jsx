@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../../pages/Home";
 import MyList from "../../pages/MyList";
 import Watch from "../../pages/Watch";
-import Register from "../../pages/Register";
 
 export default function App() {
   return (

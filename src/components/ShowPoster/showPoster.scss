@@ -1,14 +1,6 @@
 .show-poster {
-
-  &.portrait {
-    width: 8rem;
-    height: 12rem;
-  }
-
-  &.landscape {
-    width: 225px;
-    height: 8rem;
-  }
+  width: 225px;
+  height: 8rem;
 
   > img {
     width: 100%;
@@ -18,7 +10,6 @@
   }
 
   .poster-hover {
-    top: -3.5rem;
     width: 280px;
     transform: scale(1.15);
     cursor: auto;

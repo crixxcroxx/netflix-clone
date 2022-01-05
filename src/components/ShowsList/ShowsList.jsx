@@ -49,7 +49,7 @@ export default function ShowsList(props) {
                     key={show.id}
                     index={idx}
                     endpoint={endpoint}
-                    final={shows.length - 1 === idx ? true : false}
+                    isFinal={shows.length - 1 === idx ? true : false}
                   />
                 )}
               </div>
