@@ -1,0 +1,16 @@
+.search {
+  padding-block: 5rem;
+  margin-inline: 3rem;
+
+  input[type="text"] {
+    padding: 0.5rem;
+    margin-block-end: 3rem;
+    width: 100%;
+  }
+
+  .search-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+}
