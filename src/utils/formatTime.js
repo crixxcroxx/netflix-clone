@@ -5,7 +5,7 @@ export default function formatTime(time) {
   let hrLabel = hour > 1 ? "hrs " : "hr "
   let minsLabel = mins > 1 ? "mins" : "min"
 
-  let stringTime = `${hour !== 0 && hour + hrLabel} ${mins !== 0 && mins + minsLabel}`
+  let stringTime = `${hour !== 0 ? hour + hrLabel : ""} ${mins !== 0 ? mins + minsLabel : ""}`
 
   return stringTime
 }
