@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import ShowPoster from "../../components/ShowPoster";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -12,10 +10,10 @@ export default function MyList() {
   const saved = useStorePersonalList(state => state.saved)
 
   return (
-    <>
+    <div className="my-list">
       <Navbar />
 
-      <div className="my-list">
+      <div className="my-list-wrapper">
         <div className="title">My List</div>
 
         <div className="list">
@@ -26,6 +24,6 @@ export default function MyList() {
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 }

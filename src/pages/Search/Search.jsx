@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import ShowPoster from "../../components/ShowPoster";
 
 import { useStoreShows } from "../../zustand/store";
+import getUniqueFromArray from "../../utils/getUniqueFromArray";
 
 import "./search.scss";
 
@@ -12,7 +13,9 @@ export default function Search() {
   const [searchField, setSearchField] = useState("");
   const searchRef = useRef()
 
-  const db = useStoreShows(state => state.trending)
+  const { trending, popular, tvShows } = useStoreShows(state => state)
+  const allShows = [ ...trending, ...popular, ...tvShows ]
+  const db = getUniqueFromArray(allShows, "id")
 
   const filteredShows = db.filter(show => {
     return (
@@ -36,10 +39,10 @@ export default function Search() {
   }
 
   return (
-    <>
+    <div className="search">
       <Navbar />
 
-      <div className="search">
+      <div className="search-wrapper">
         <input
           ref={searchRef}
           onChange={handleChange}
@@ -60,6 +63,6 @@ export default function Search() {
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 }

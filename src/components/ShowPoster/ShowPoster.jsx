@@ -8,19 +8,27 @@ import getHoverOffset from "../../utils/getHoverOffset";
 import "./showPoster.scss";
 
 export default function ShowPoster(props) {
-  const { index, endpoint, isFinal, isPersonalList } = props
+  const {
+    index,
+    endpoint,
+    isFinal,
+    isPersonalList,
+    searchResults
+  } = props
   const BASE_URL = "https://image.tmdb.org/t/p/w500"
 
   const [isHovered, setIsHovered] = useState(false);
   const posterRef = useRef()
 
-  const { offsetX, offsetY } = getHoverOffset(index, posterRef, isFinal, isPersonalList)
+  const { offsetX, offsetY }
+    = getHoverOffset(index, posterRef, isFinal, isPersonalList)
 
   const shows = useStoreShows(state => state[endpoint])
   const personalList = useStorePersonalList(state => state.saved)
-  const show = isPersonalList
-    ? (personalList && personalList[index])
-    : (shows && shows[index])
+  const show =
+    (searchResults && searchResults[index]) ||
+    (isPersonalList && personalList[index]) ||
+    (endpoint && shows[index])
 
   return (
     <>
@@ -41,7 +49,12 @@ export default function ShowPoster(props) {
           className="poster-hover"
           style={{left: offsetX, top: offsetY}}
         >
-          <Card index={index} endpoint={endpoint} isPersonalList={isPersonalList} />
+          <Card
+            index={index}
+            endpoint={endpoint}
+            isPersonalList={isPersonalList}
+            searchResults={show}
+          />
         </div>
       }
     </div>

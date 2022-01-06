@@ -6,15 +6,13 @@ import InfoOutlined from '@material-ui/icons/InfoOutlined';
 import Category from "../Category";
 
 import { useStoreShows } from "../../zustand/store.js";
-import toProperName from "../../utils/toProperName";
 
 import "./billboard.scss";
 
-export default function Billboard() {
+export default function Billboard({ category }) {
   const trending = useStoreShows(state => state.trending)
   const featured = trending.length > 0 && trending[Math.floor(Math.random() * (trending.length - 1))]
   const navigate = useNavigate()
-  const category = "movie"
 
   return (
     <div className="billboard">
@@ -27,7 +25,11 @@ export default function Billboard() {
             />
           </div>
 
-          <Category type={category} />
+          <>
+            {category &&
+              <Category type={category} />
+            }
+          </>
 
           <div className="shadow"></div>
 
@@ -37,7 +39,7 @@ export default function Billboard() {
                 src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg"
                 alt="Logo"
               />
-              <p>{toProperName(category)}</p>
+              <p>Movie</p>
             </header>
 
             <h1 className="title">
@@ -46,7 +48,7 @@ export default function Billboard() {
 
             <div className="btn-grp">
               <button
-                onClick={() => navigate(`watch/${featured.detailed.videos.results[0].key}`)}
+                onClick={() => navigate(`/watch/${featured.original_name || featured.original_title}/${featured.detailed.videos.results[0].key}`)}
               >
                 <PlayArrow />
                 <span>Play</span>
@@ -59,8 +61,8 @@ export default function Billboard() {
             </div>
 
             <span className="synopsis">{
-              featured.overview.length > 200
-                ? featured.overview.substring(0, 200) + "..."
+              featured.overview.length > 250
+                ? featured.overview.substring(0, 250) + "..."
                 : featured.overview
             }</span>
           </div>

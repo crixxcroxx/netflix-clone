@@ -6,7 +6,6 @@ import Add from '@material-ui/icons/Add';
 import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
 import ThumbDownOutlined from '@material-ui/icons/ThumbDownOutlined';
 
-// toggled icons
 import Check from '@material-ui/icons/Check';
 import ThumbUpAlt from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownAlt from '@material-ui/icons/ThumbDownAlt';
@@ -46,7 +45,9 @@ export default function CardMenu(props) {
 
   return (
     <div className="card-menu">
-      <div className="icon" onClick={() => navigate(`watch/${show.detailed.videos.results[0].key}`)}>
+      <div className="icon" onClick={() =>
+        navigate(`/watch/${show.original_name || show.original_title}/${show.detailed.videos.results[0].key}`)
+      }>
         <PlayArrow />
       </div>
 

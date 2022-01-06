@@ -7,13 +7,14 @@ import getYear from "../../utils/getYear";
 import "./card.scss";
 
 export default function Card(props) {
-  const { index, endpoint, isPersonalList } = props
+  const { index, endpoint, isPersonalList, searchResults } = props
 
   const shows = useStoreShows(state => state[endpoint])
   const personalList = useStorePersonalList(state => state.saved)
-  const show = isPersonalList
-    ? (personalList && personalList[index])
-    : (shows && shows[index])
+  const show =
+    searchResults ||
+    (isPersonalList && personalList[index]) ||
+    (endpoint && shows[index])
 
   return (
     <div className="card">

@@ -5,7 +5,7 @@ import BackBtn from "../../components/BackBtn";
 import "./watch.scss";
 
 export default function Watch() {
-  const { id } = useParams()
+  const { id, title } = useParams()
 
   return (
     <div className="watch">
@@ -13,6 +13,7 @@ export default function Watch() {
 
         <iframe
           src={`https://www.youtube.com/embed/${id}`}
+          title={title}
           frameBorder={0}
         >
         </iframe>

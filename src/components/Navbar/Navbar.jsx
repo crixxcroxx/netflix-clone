@@ -21,8 +21,6 @@ export default function Navbar({ logoBtn }) {
     return () => window.removeEventListener("onscroll", setIsScrolled(false), true)
   }, []);
 
-
-
   return (
     <div className={`navbar ${isScrolled && "scrolled"}`}>
       <div className="nav-links">
@@ -35,13 +33,12 @@ export default function Navbar({ logoBtn }) {
         </Link>
 
         {!logoBtn &&
-          <>
-            <Link to="/">Homepage</Link>
+          <div className="nav-left">
             <span>Series</span>
             <span>Movies</span>
             <span>New & Popular</span>
-            <Link to="my_list">My List</Link>
-          </>
+            <Link to="/myList">My List</Link>
+          </div>
         }
       </div>
 
@@ -49,7 +46,9 @@ export default function Navbar({ logoBtn }) {
         {logoBtn
           ? <button className="sign-in-btn">Sign In</button>
           : <>
-              <Search />
+              <Link to="/search">
+                <Search />
+              </Link>
               <span>Kids</span>
               <Notifications />
               <AccountBox />
