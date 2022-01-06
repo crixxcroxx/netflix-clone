@@ -16,24 +16,17 @@ export default function Home() {
       <Billboard />
 
       <CarouselBox>
-        <ShowsList
-          key={31215}
-          index={1}
-          title={endpoints[keys[0]].title}
-          endpoint={keys[0]}
-        />
+        {keys.map((title, idx) =>
+          <ShowsList
+            key={title}
+            index={keys.length - idx}
+            title={endpoints[keys[idx]].title}
+            endpoint={keys[idx]}
+          />
+        )}
       </CarouselBox>
 
       <Footer />
     </div>
   );
 }
-
-// {keys.map((title, idx) =>
-//           <ShowsList
-//             key={title}
-//             index={keys.length - idx}
-//             title={endpoints[keys[idx]].title}
-//             endpoint={keys[idx]}
-//           />
-//         )}
