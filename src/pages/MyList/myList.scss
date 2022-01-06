@@ -1,23 +1,30 @@
 .my-list {
-  max-width: 1000px;
-  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  .title {
-    margin-inline-start: 3rem;
-    font-size: 1.3rem;
-    padding-block: 4rem 2rem;
-    color: var(--clr-white);
-  }
+  height: 100vh;
 
-  .list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+  .my-list-wrapper {
 
-    margin: 0 3rem 3rem 3rem;
+    .title {
+      margin-inline-start: 3rem;
+      padding-block: 4rem 2rem;
+      font-size: 1.3rem;
+      text-align: left;
+      color: var(--clr-white);
+    }
 
-    > * {
-      min-width: 225px;
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+
+      margin: 0 3rem 3rem 3rem;
+
+      > * {
+        min-width: 225px;
+      }
     }
   }
 }

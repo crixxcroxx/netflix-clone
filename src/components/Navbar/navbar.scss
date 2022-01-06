@@ -8,7 +8,7 @@
   padding: 1rem 3rem;
   z-index: 99;
   font-size: 0.9rem;
-  color: white;
+  color: var(--clr-white);
   background: linear-gradient(
     to top,
     transparent 0%,
@@ -17,6 +17,9 @@
   );
   transition: 300ms ease;
 
+  a {
+    color: var(--clr-white);
+  }
 
   &.scrolled {
     background-color: var(--clr-black);
@@ -28,12 +31,16 @@
     align-items: center;
     gap: 1rem;
 
-    > * {
+    .logo {
+      height: 32px; /*32 x 108*/
       cursor: pointer;
     }
 
-    .logo {
-      height: 32px; /*32 x 108*/
+    .nav-left {
+      display: none;
+      align-items: center;
+      gap: 0.8rem;
+      cursor: pointer;
     }
   }
 
@@ -50,7 +57,7 @@
       padding: 0.5rem 0.6rem;
       border: none;
       font-size: 0.9rem;
-      color: white;
+      color: var(--clr-white);
       background-color: var(--clr-red);
     }
 
@@ -79,6 +86,17 @@
         .account-dropdown {
           display: flex;
         }
+      }
+    }
+  }
+}
+
+
+@media (min-width: 600px) {
+  .navbar {
+    .nav-links {
+      .nav-left {
+        display: flex;
       }
     }
   }
