@@ -5,7 +5,7 @@
 
   position: fixed;
   width: 100%;
-  padding: 1rem 3rem;
+  padding: 1rem;
   z-index: 99;
   font-size: 0.9rem;
   color: var(--clr-white);
@@ -45,7 +45,7 @@
   }
 
   .nav-right {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 0.8rem;
 
@@ -89,15 +89,30 @@
       }
     }
   }
+
+  .menu {
+    display: flex;
+    gap: 0.5rem;
+  }
 }
 
 
 @media (min-width: 600px) {
   .navbar {
+    padding-inline: 3rem;
+
     .nav-links {
       .nav-left {
         display: flex;
       }
+    }
+
+    .nav-right {
+      display: flex;
+    }
+
+    .menu {
+      display: none;
     }
   }
 }

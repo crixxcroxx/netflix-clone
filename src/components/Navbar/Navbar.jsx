@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Search from '@material-ui/icons/Search';
+import Add from '@material-ui/icons/Add';
 import Notifications from '@material-ui/icons/Notifications';
 import AccountBox from '@material-ui/icons/AccountBox';
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
@@ -12,11 +13,7 @@ export default function Navbar({ logoBtn }) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    window.onscroll = () => {
-      setIsScrolled(window.pageYOffset === 0 ? false : true)
-
-      return () => window.onscroll = null
-    }
+    window.onscroll = () => setIsScrolled(window.pageYOffset === 0 ? false : true)
 
     return () => window.removeEventListener("onscroll", setIsScrolled(false), true)
   }, []);
@@ -62,6 +59,16 @@ export default function Navbar({ logoBtn }) {
               </div>
             </>
         }
+      </div>
+
+      <div className="menu">
+        <Link to="/search">
+          <Search />
+        </Link>
+
+        <Link to="/myList">
+          <Add />
+        </Link>
       </div>
     </div>
   );
