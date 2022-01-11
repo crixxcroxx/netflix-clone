@@ -2,7 +2,7 @@
   --clr-white: #f0f0f0;
   --clr-black: #0b0b0b;
   --clr-grey: #222222;
-  --clr-grey-light: #3e3e3e;
+  --clr-grey-light: #4a4a4a;
   --clr-grey-light-a: #3e3e3eb3;
   --clr-green: #12ca22;
   --clr-red: #e50914;
@@ -41,4 +41,9 @@ h2 {
 
 h3 {
   font-size: 23px;
+}
+
+.app {
+  max-width: 1000px;
+  margin-inline: auto;
 }

@@ -32,25 +32,25 @@ export default function Card(props) {
       <div className="card-info">
         <CardMenu id={show.id} show={show} />
 
-        <div className="details">
-          <span>{
-            (show.detailed.runtime && formatTime(show.detailed.runtime)) ||
-            (show.detailed.episode_run_time[0] && formatTime(show.detailed.episode_run_time[0]))
-          }</span>
+        <div>
+          <div className="details">
+            <span>{
+              (show.detailed.runtime && formatTime(show.detailed.runtime)) ||
+              (show.detailed.episode_run_time[0] && formatTime(show.detailed.episode_run_time[0]))
+            }</span>
 
-          {/*<span className="age-restriction">+16</span>*/}
+            <span>{
+              (show.detailed.release_date && getYear(show.detailed.release_date)) ||
+              (show.detailed.first_air_date && getYear(show.detailed.first_air_date))
+            }</span>
+          </div>
 
-          <span>{
-            (show.detailed.release_date && getYear(show.detailed.release_date)) ||
-            (show.detailed.first_air_date && getYear(show.detailed.first_air_date))
-          }</span>
+          <div className="genre">
+            {show.detailed.genres.map(genre =>
+              <span key={genre.name}>{genre.name}</span>
+            )}
+          </div>
         </div>
-
-        <span className="synopsis">{
-          show.overview.length > 200
-            ? show.overview.substring(0, 200) + "..."
-            : show.overview
-        }</span>
       </div>
     </div>
   );

@@ -1,18 +1,20 @@
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 
-import ArrowBackIosOutlined from '@material-ui/icons/ArrowBackIosOutlined';
-import ArrowForwardIosOutlined from '@material-ui/icons/ArrowForwardIosOutlined';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation } from 'swiper';
 
 import ShowPoster from "../ShowPoster";
 
 import { useStoreShows } from "../../zustand/store";
-import carousel from "../../utils/carousel";
 
+import 'swiper/scss';
+import 'swiper/scss/navigation';
 import "./showsList.scss";
+
+SwiperCore.use([Navigation]);
 
 export default function ShowsList(props) {
   const { index, title, endpoint } = props
-  const listRef = useRef()
 
   const fetchShows = useStoreShows(state => state.fetchShows)
 
@@ -35,33 +37,32 @@ export default function ShowsList(props) {
             className="shows-list"
             style={{zIndex: index}}
           >
-            <span className="list-title">{title}</span>
+            <div className="list-title">{title}</div>
 
-            <div className="list-container">
-              <ArrowBackIosOutlined
-                className="slider-arrow left"
-                onClick={() => carousel(listRef, "left")}
-              />
-
-              <div className="list" ref={listRef}>
-                {shows.map((show, idx) =>
+            <Swiper
+              spaceBetween={5}
+              slidesPerView={4}
+              navigation
+            >
+              {shows.map((show, idx) =>
+                <SwiperSlide
+                  key={show.id}
+                  style={{
+                    zIndex: shows.length - 1 !== idx
+                      ? shows.length - idx
+                      : shows.length
+                  }}
+                >
                   <ShowPoster
-                    key={show.id}
                     index={idx}
                     endpoint={endpoint}
                     isFinal={shows.length - 1 === idx ? true : false}
                   />
-                )}
-              </div>
-
-              <ArrowForwardIosOutlined
-                className="slider-arrow right"
-                onClick={() => carousel(listRef, "right")}
-              />
-            </div>
+                </SwiperSlide>
+              )}
+            </Swiper>
           </div>
       }
     </>
   );
 }
-

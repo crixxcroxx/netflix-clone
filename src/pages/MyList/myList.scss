@@ -17,12 +17,14 @@
 
     .list {
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
       gap: 0.25rem;
 
       margin: 0 3rem 3rem 3rem;
 
       > * {
+        height: 8rem;
         min-width: 225px;
       }
     }
