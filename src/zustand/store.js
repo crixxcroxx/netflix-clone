@@ -1,5 +1,6 @@
 import axios from "axios";
 import create from "zustand";
+import produce from "immer";
 
 import { endpoints } from "../assets/data";
 
@@ -49,18 +50,19 @@ export const useStorePersonalList = create((set, get) => ({
   disliked: [],
   saved: [],
   addToList: (key, id, item) => {
-    let personalList = get()[key]
-    let showIndex = personalList.findIndex(k => k.id === id)
-
-    // do not add if already existing
-    if(showIndex === -1)
-      set({ [key]: [item, ...personalList] })
+    set(
+      produce((draft) => {
+        const showIndex = draft[key].findIndex(el => el.id === item.id);
+        if(showIndex === -1) draft[key].unshift(item);
+      })
+    )
   },
   removeFromList: (key, id) => {
-    let showIndex = get()[key].findIndex(k => k.id === id)
-
-    get()[key].splice(showIndex, 1)
-
-    set({ [key]: get()[key] })
+    set(
+      produce((draft) => {
+        const showIndex = draft[key].findIndex(el => el.id === id);
+        draft[key].splice(showIndex, 1);
+      })
+    )
   },
 }))
