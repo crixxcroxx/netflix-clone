@@ -3,13 +3,12 @@
   flex-direction: column;
   gap: 0.5rem;
 
-  max-width: 870px;
-  margin-inline: auto;
-  padding: 1.5rem 1rem;
+  margin-inline: 1rem;
+  padding-block: 1.5rem;
 }
 
 @media (min-width: 600px) {
   .carousel-box {
-    padding-inline: 0;
+    margin-inline: 3rem;
   }
 }

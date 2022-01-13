@@ -32,7 +32,6 @@ export default function ShowPoster(props) {
       className="show-poster"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-//       ref={posterRef}
     >
       <img
         className="show-poster-img"
