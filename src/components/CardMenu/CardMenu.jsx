@@ -40,6 +40,16 @@ export default function CardMenu(props) {
       [clickKey]: !value
     }))
 
+    clickKey === "isLiked"
+      ? setIsClicked(currentState => ({
+          ...currentState,
+          isDisliked: false
+        }))
+      : setIsClicked(currentState => ({
+          ...currentState,
+          isLiked: false
+        }))
+
     !value ? addToList(listKey, id, show) : removeFromList(listKey, id)
   };
 
